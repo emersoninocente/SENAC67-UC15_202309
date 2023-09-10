@@ -8,10 +8,47 @@
             h1 {
                 text-align: center;
             }
+            .row{
+                display: flex;
+                flex-flow: row wrap;
+            }
+            .col-25 {
+                width: 25%;
+            }
         </style>
     </head>
     <body>
-        <h1>Página desenvolvida para material das aulas da turma 14N</h1>
-        <a href="aula-01/material/Aula01.pptx">Apresentação da primeira aula</a>
+        <header>
+            <h1>Página desenvolvida para material das aulas da turma 14N</h1>
+        </header>
+        <section>
+            <div class="row">
+                <aula01 class="col-25">
+                    <h3>Aula 01</h3>
+                        <ul>
+                            <li><a href="aula-01/material/Aula01.pptx">Apresentação da primeira aula</a></li>
+                        </ul>
+                </aula01>
+                <aula02 class="col-25">
+                    <h3>Aula 02</h3>
+                        <ul>
+                            <li><a href="aula-02/material/Aula02.pptx">Apresentação da segunda aula</a></li>
+                        </ul>
+                </aula02>
+                <aula03 class="col-25">
+                    <h3>Aula 03</h3>
+                        <ul>
+                            <li><a href="aula-03/material/Aula03.pptx">Apresentação da terceira aula</a></li>
+                            <li><a href="aula-03/material/OqueAconteceQuandoDigitaURL.gif">O que acontece quando vc digita URL</a></li>
+                        </ul>
+                </aula03>
+                <aula04 class="col-25">
+                    <h3>Aula 04</h3>
+                </aula04>
+            </div>
+        </section>
+        <footer>
+            <h6>Material desenvolvido e compilado por prof. Emerson Inocente (51) 99981-5106</h6>
+        </footer>
     </body>
 </html>
