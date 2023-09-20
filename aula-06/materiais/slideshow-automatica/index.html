@@ -30,9 +30,11 @@
     </div>
     -->
     <script>
+      // Declara variável
       let slideIndex = 1;
+      // Chama função passando a variável
       showSlides(slideIndex);
-      
+      // Cria função para incrementar o valor da variável
       function plusSlides(n) {
         showSlides(slideIndex += n);
       }
@@ -40,21 +42,23 @@
       function currentSlide(n) {
         showSlides(slideIndex = n);
       }
-      
+      // Função que faz o processo
       function showSlides(n) {
         let i;
         let slides = document.getElementsByClassName("mySlides");
         let dots = document.getElementsByClassName("dot");
+        // Garante que o valor passado na variável não seja menor ou maior que a quantidade de objetos
         if (n > slides.length) {slideIndex = 1}    
         if (n < 1) {slideIndex = slides.length}
+        // Faz com que somente a imagem selecionada seja apresentada usando as setas ou os pontos
         for (i = 0; i < slides.length; i++) {
           slides[i].style.display = "none";  
         }
         for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
+          dots[i].className = dots[i].className.replace("active", "");
         }
         slides[slideIndex-1].style.display = "block";  
-        dots[slideIndex-1].className += " active";
+        dots[slideIndex-1].className += "active";
       }
     </script>
   </body>
