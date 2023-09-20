@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Teste</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <img src="img/blue_300x100.png" alt="Imagem Azul">
+      </div>
+      <div class="mySlides fade">
+        <img src="img/green_300x100.png" alt="Imagem Verde">
+      </div>
+      <div class="mySlides fade">
+        <img src="img/red_300x100.png" alt="Imagem Vermelha">
+      </div>
+    </div>
+    <script>
+        /* Explicando:
+        let - usamos para declarar variaveis
+        document - indica nossa página web
+        getElementsByClassName - busca elementos na página pelo nome da classe, podem encontrar mais em https://www.w3schools.com/js/js_htmldom_document.asp
+        console.log - imprime a variável na console, necessário ativar Dev Tool e acessar console. Vide imagem na pasta img/output_test-01.png
+        */
+        let slides = document.getElementsByClassName("mySlides");
+        console.log(slides);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Página com Slide Show</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <!-- Vamos importar o arquivo de estilos -->
+    <link rel="stylesheet" href="css/stile.css">
+  </head>
+  <body>
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <img src="img/blue_300x100.png" alt="Imagem Azul">
+      </div>
+      <div class="mySlides fade">
+        <img src="img/green_300x100.png" alt="Imagem Verde">
+      </div>
+      <div class="mySlides fade">
+        <img src="img/red_300x100.png" alt="Imagem Vermelha">
+      </div>
+    </div>
+    <script>
+      // Adiciona um evento de click ao carrgar o documento (pagina)
+      document.addEventListener("DOMContentLoaded", function() {
+        let slideIndex = 0;
+        let slides = document.getElementsByClassName("mySlides");
+        // Incrementa valor do indice ate o valor maximo de imagens
+        function plusSlides() {
+          slideIndex = (slideIndex += 1) % slides.length;
+          showSlides(slideIndex);
+        }
+        // Esconde todas as imagens e apresenta somente a do indice
+        function showSlides(n) {
+          let i;
+          for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+          }
+          slides[n].style.display = "block";
+        }
+        // Chama a funcao para apresentar as imagens
+        showSlides(slideIndex);
+        // Cria o loop com tempo em milisegundos
+        setInterval(plusSlides, 3000);
+      });
+    </script>
+  </body>
+</html>
