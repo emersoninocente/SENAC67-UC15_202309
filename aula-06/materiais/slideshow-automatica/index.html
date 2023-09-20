@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Página com Slide Show</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <!-- Vamos importar o arquivo de estilos -->
+    <link rel="stylesheet" href="css/stile.css">
+  </head>
+  <body>
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <img src="img/blue_300x100.png" alt="Imagem Azul">
+      </div>
+      <div class="mySlides fade">
+        <img src="img/green_300x100.png" alt="Imagem Verde">
+      </div>
+      <div class="mySlides fade">
+        <img src="img/red_300x100.png" alt="Imagem Vermelha">
+      </div>
+      <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+    <!-- Montando os pontos abaixo da imagen, se quiser colocar na tela descomentar este trecho
+    <br>
+    <div style="text-align: center;">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+    -->
+    <script>
+      let slideIndex = 1;
+      showSlides(slideIndex);
+      
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+      /** Monta a função para clicar nos pontos */
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+      
+      function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+      }
+    </script>
+  </body>
+</html>
