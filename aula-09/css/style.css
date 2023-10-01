@@ -1,0 +1,51 @@
+/* Declaracao variaveis */
+:root{
+    --cor-principal: rgb(46,62,77);
+    --cor-secundaria: rgb(222, 228, 235);
+}
+
+section {
+    height: 400px;
+    width: auto;
+}
+
+nav {
+    max-width: 150px;
+    width: 100%;
+    background-color: aquamarine;
+    float: left;
+}
+/* Podemos usar a ideia de hierarquia para as declaracoes
+   somente sera aplicado na ul dentro do nav */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    border-bottom: 1px solid var(--cor-secundaria);
+}
+
+nav ul li a {
+    background-color: var(--cor-principal);
+    color: #FFF;
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    /* transition aplica efeito de transicao na propriedade modificada */
+    transition: background .3s;
+    text-transform: uppercase;
+}
+
+nav ul li a:hover {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-principal);
+}
+
+article {
+    float: left;
+    width: 60%;
+    height: 278px;
+    padding: 5%;
+    text-align: justify;
+}
