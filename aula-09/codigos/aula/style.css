@@ -1,0 +1,32 @@
+body {
+    background-image: url('imagem_fundo.png');
+}
+header{}
+
+section{
+}
+nav{
+    float: left;
+    width: 20%;
+}
+
+nav ul li {
+    background-color: aquamarine;
+    color: brown;
+    text-align: center;
+    transition: .3s;
+}
+
+nav ul li:hover {
+    background-color: red;
+    color: black;
+    text-align: center;
+}
+
+article{
+    float: left;
+    width: 60%;
+    padding: 10px;
+    margin: 15px;
+    text-align: justify;
+}
