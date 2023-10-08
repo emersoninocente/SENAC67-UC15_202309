@@ -1,0 +1,7 @@
+body {
+    background-image: url("imagem_fundo.png");
+    background-color: aqua;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
