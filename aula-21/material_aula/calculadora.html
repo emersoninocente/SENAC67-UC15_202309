@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <input type="number" placeholder="Digite um valor" id="arg1">
+    <input type="number" placeholder="Digite outro valor" id="arg2">
+    <button type="button" onclick="multiplica();">Multiplicar</button>
+    <script>
+        function multiplica() {
+          let inputVal1 = document.getElementById("arg1").value;
+          let inputVal2 = document.getElementById("arg2").value;
+          let resultado = inputVal1 * inputVal2;
+          alert(resultado);
+        }
+      </script>
+      <div>
+        <p>Resultado &eacute;:</p>
+        <p id="resultado"></p>
+      </div>
+</body>
+</html>
