@@ -1,18 +1,9 @@
-/*
-// NOTE: You don't need to mess around with 
-// CSS to follow the tutorial. Focus on the 
-// JavaScript instead!
-// =========================
-*/
-
-/* Some personal resets */
+/* Inicializacao dos padroes */
 html {
   box-sizing: border-box;
 }
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: inherit;
 }
 
@@ -20,70 +11,14 @@ body {
   margin: 0;
 }
 
-/* Responsive Images */
+/* Limpando listas */
 
-embed,
-iframe,
-img,
-object,
-video {
-  max-width: 100%;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ul,
-ol,
-li,
-p,
-pre,
-blockquote,
-figure,
-hr {
-  margin: 0;
-  padding-right: 0;
-  padding-left: 0;
-}
-
-a {
-  text-decoration: none;
-}
-
-a:focus {
-  outline: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  display: block;
-}
-
-/* Removes all decimals and discs from lists */
-
-ol,
-ul {
+ol, ul {
   list-style: none;
 }
 
-/* 
- * Completely resets form items
- * ----------------------------
- * Super hard reset that removes all borders
- * and radiuses of all form items (including
- * checkboxes and radios)
- */
-
-input,
-textarea,
-button {
+/* Reset total dos itens */
+input, textarea, button {
   border: 0;
   border-radius: 0;
   background-color: transparent;
@@ -95,15 +30,7 @@ button {
   text-align: left;
 }
 
-input:hover,
-input:active,
-input:focus,
-textarea:hover,
-textarea:active,
-textarea:focus,
-button:hover,
-button:active,
-button:focus {
+input:hover, input:active, input:focus, textarea:hover, textarea:active, textarea:focus, button:hover, button:active, button:focus {
   outline: none;
 }
 
@@ -119,7 +46,7 @@ html {
 
 body {
   align-items: center;
-  background-image: linear-gradient(236deg, #74ebd5, #acb6e5);
+  background-color: darkcyan;
   display: flex;
   height: 100vh;
   justify-content: center;
@@ -165,8 +92,7 @@ body {
   text-align: center;
 }
 
-.calculator__keys > *:active::before,
-.calculator__keys > .is-depressed::before {
+.calculator__keys > *:active::before, .calculator__keys > .is-depressed::before {
   background-color: rgba(0, 0, 0, 0.2);
   bottom: 0;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5) inset;
@@ -187,4 +113,27 @@ body {
   background-image: linear-gradient(to bottom, #fe886a, #ff7033);
   grid-column: -2;
   grid-row: 2 / span 4;
+}
+
+/* Responsive */
+embed, iframe, img, object, video {
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, ul, ol, li, p, pre, blockquote, figure, hr {
+  margin: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:focus {
+  outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  display: block;
 }

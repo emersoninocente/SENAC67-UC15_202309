@@ -9,9 +9,10 @@
     <input type="number" placeholder="Digite um valor" id="arg1">
     <input type="number" placeholder="Digite outro valor" id="arg2">
     <button type="button" onclick="multiplica();">Multiplicar</button>
-	<button type="button" onclick="add();">Somar</button>
-	<button type="button" onclick="add();">Subtrair</button>
-	<button type="button" onclick="add();">Dividir</button>
+	  <button type="button" onclick="add();">Somar</button>
+    <!-- Falta definir as funcoes -->
+	  <button type="button" onclick="add();">Subtrair</button>
+	  <button type="button" onclick="add();">Dividir</button>
     <script>
         function multiplica() {
           let inputVal1 = document.getElementById("arg1").value;
@@ -19,18 +20,17 @@
           let resultado = inputVal1 * inputVal2;
           alert(resultado);
         }
-		function add() {
-		  let inputVal1 = document.getElementById("arg1").value;
+		    function add() {
+		      let inputVal1 = document.getElementById("arg1").value;
           let inputVal2 = document.getElementById("arg2").value;
           let resultado = parseFloat(inputVal1) + parseFloat(inputVal2);
-          alert(resultado);
-		}
+          //alert(resultado);
+          document.getElementById("resultado").innerHTML = resultado
+		    }
       </script>
-	  <!--
       <div>
         <p>Resultado &eacute;:</p>
         <p id="resultado"></p>
       </div>
-	  -->
 </body>
 </html>

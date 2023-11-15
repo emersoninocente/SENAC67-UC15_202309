@@ -7,18 +7,22 @@
     <title>Calculadora em JS</title>
 </head>
 <body>
+    <!--
+        Codigo contempla uma boa gama dos processos mas ainda tem muita coisa que pode ser melhorado,
+        tratar alguns erros que ainda persistem, refatorar os códigos para ficarem mais simples e funcionais.
+    -->
     <div class="container">
         <p>
-          This component works exactly like the calculator you know. Click any number to start calculating!
+          Esta calculadora trabalha exatamente como as calculadoras tradicionais. Click em um número para começar.
         </p>
         <div class="calculator">
           <div class="calculator__display">0</div>
       
           <div class="calculator__keys">
             <button class="key--operator" data-action="add">+</button>
-            <button class="key--operator" data-action="subtract">-</button>
-            <button class="key--operator" data-action="multiply">&times;</button>
-            <button class="key--operator" data-action="divide">÷</button>
+            <button class="key--operator" data-action="sub">-</button>
+            <button class="key--operator" data-action="mul">&times;</button>
+            <button class="key--operator" data-action="div">÷</button>
             <button>7</button>
             <button>8</button>
             <button>9</button>
@@ -29,46 +33,119 @@
             <button>2</button>
             <button>3</button>
             <button>0</button>
-            <button data-action="decimal">.</button>
+            <button data-action="dec">.</button>
             <button data-action="clear">AC</button>
-            <button class="key--equal" data-action="calculate">=</button>
+            <button class="key--equal" data-action="calc">=</button>
           </div>
         </div>
       </div>
-      
+      <!-- Este bloco com javascript pode ser movido para arquivo externo -->
       <script>
-        const calculator = document.querySelector('.calculator')
-        const keys = calculator.querySelector('.calculator__keys')
+        const calculator = document.querySelector(".calculator")
+        const keys = calculator.querySelector(".calculator__keys")
+        // Recupera o valor no display
+        const display = document.querySelector(".calculator__display")
+
+        const calcula = (val1, ope, val2) => {
+            let resultado = ""
+            // Vamos lembrar que val1 e val2 são string...
+            if (ope === "add"){
+                resultado = parseFloat(val1) + parseFloat(val2)
+            } else if (ope === "sub"){
+                resultado = parseFloat(val1) - parseFloat(val2)
+            } else if (ope === "mul"){
+                resultado = parseFloat(val1) * parseFloat(val2)
+            } else if (ope === "div"){
+                resultado = parseFloat(val1) / parseFloat(val2)
+            }
+            return resultado
+        }
         
         keys.addEventListener('click', e => {
             if (e.target.matches('button')) {
                 const key = e.target
                 const action = key.dataset.action
+                const keyContent = key.textContent
+                const displayedNum = display.textContent
+                const previousKeyType = calculator.dataset.previousKeyType
 
                 if (!action) {
-                    console.log("Number key")
+                    /* Validar se display é 0, troca o valor mostrado
+                    *  se valor foi diferente "concatena" */
+                    if (displayedNum === "0" || previousKeyType === "operator" || previousKeyType === "calc") {
+                        display.textContent = keyContent
+                    } else {
+                        display.textContent = displayedNum + keyContent
+                    }
+                    calculator.dataset.previousKeyType = "numero"
                 }
-                if (
-                    action === 'add' ||
-                    action === 'subtract' ||
-                    action === 'multiply' ||
-                    action === 'divide'
-                ) {
-                    console.log('operator key!')
+                if (action === 'add' || action === 'sub' || action === 'mul' || action === 'div') {
+                    const priValor = calculator.dataset.priValor
+                    const operador = calculator.dataset.operator
+                    const segValor = displayedNum
+
+                    if (priValor && operador && previousKeyType !== "operator" && previousKeyType !== "calc") {
+                        const calcRes = calcula(priValor, operador, segValor)
+                        display.textContent = calcRes
+                        // Atualiza valor de calcRes para priValor
+                        calculator.dataset.priValor = calcRes
+                    } else {
+                        calculator.dataset.priValor = displayedNum
+                    }
+
+                    key.classList.add("is-depressed")
+                        // Vamos adicionar atributo operador
+                        calculator.dataset.previousKeyType = "operator"
+                        calculator.dataset.operator = action
                 }
-                if (action === 'decimal') {
-                    console.log('decimal key!')
+                if (action === 'dec') {
+                    // Se for teclado decimal, concatenamos ponto
+                    if (!displayedNum.includes(".")){
+                        display.textContent = displayedNum + "."    
+                    } else if (previousKeyType === "operator"  || previousKeyType === "calc"){
+                        display.textContent = "0."
+                    }
+                    calculator.dataset.previousKeyType = "dec"
                 }
 
+                if (action !== "clear") {
+                    const clearButton = calculator.querySelector("[data-action=clear]")
+                    clearButton.textContent = "CE"
+                }
                 if (action === 'clear') {
-                    console.log('clear key!')
+                    if (key.textContent === "AC") {
+                        calculator.dataset.priValor = ""
+                        calculator.dataset.modValue = ""
+                        calculator.dataset.operator = ""
+                        calculator.dataset.previousKeyType = ""
+                    } else {
+                        key.textContent = "AC"
+                    }
+                    display.textContent = 0
+                    calculator.dataset.previousKeyType = "clear"
                 }
 
-                if (action === 'calculate') {
-                    console.log('equal key!')
+                if (action === 'calc') {
+                    let priValor = calculator.dataset.priValor
+                    const operator = calculator.dataset.operator
+                    const segValor = displayedNum
+
+                    if (priValor) {
+                        if (previousKeyType === "calc") {
+                            priValor = displayedNum
+                            segValor = calculator.dataset.modValue
+                        }
+                        display.textContent = calcula(priValor, operator, segValor)
+                    }
+                    calculator.dataset.modValue = segValor
+                    calculator.dataset.previousKeyType = "calc"
                 }
+
+                Array.from(key.parentNode.children)
+                  .forEach(k => k.classList.remove("is-depressed"))
             }
         })
+
       </script>
 
 </body>

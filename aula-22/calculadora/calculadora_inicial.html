@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cal_style.css">
+    <title>Calculadora em JS</title>
+</head>
+<body>
+    <div class="container">
+        <p>
+          Esta calculadora trabalha exatamente como as calculadoras tradicionais. Click em um número para começar.
+        </p>
+        <div class="calculator">
+          <!-- Monta o display e apresenta valor padrão -->
+          <div class="calculator__display">0</div>
+      
+          <div class="calculator__keys">
+            <button class="key--operator" data-action="add">+</button>
+            <button class="key--operator" data-action="sub">-</button>
+            <button class="key--operator" data-action="mul">&times;</button>
+            <button class="key--operator" data-action="div">÷</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>0</button>
+            <button data-action="dec">.</button>
+            <button data-action="clear">AC</button>
+            <button class="key--equal" data-action="cal">=</button>
+          </div>
+        </div>
+      </div>
+      <!-- Este bloco com javascript pode ser movido para arquivo externo -->
+      <script>
+        /* Vamos "ouvir o que é teclado" pelo usuário e imprimir a saída na console */
+        const calculator = document.querySelector('.calculator')
+        const keys = calculator.querySelector('.calculator__keys')
+
+        /* Este método do js "ouve" o comportamento do navegador
+        *    Podem estudar mais em https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+        */
+        keys.addEventListener('click', e => {
+            if (e.target.matches('button')) {
+                const key = e.target
+                const action = key.dataset.action
+                // se o que foi teclado não tiver um atributo, será número
+                if (!action) {
+                    console.log("Número")
+                }
+                // definimos as operações - atributos
+                if (
+                    action === 'add' ||
+                    action === 'sub' ||
+                    action === 'mul' ||
+                    action === 'div'
+                ) {
+                    console.log('Operação!')
+                }
+                if (action === 'dec') {
+                    console.log('Decimal!')
+                }
+
+                if (action === 'clear') {
+                    console.log('Limpar!')
+                }
+
+                if (action === 'cal') {
+                    console.log('Resultado!')
+                }
+            }
+        })
+      </script>
+
+</body>
+</html>
